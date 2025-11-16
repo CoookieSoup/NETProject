@@ -1,4 +1,4 @@
-namespace YourProjectName.Models
+namespace NETProject.Models
 {
     public class BankTransaction
     {

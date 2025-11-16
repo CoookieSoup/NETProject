@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using YourProjectName.Data;
-using YourProjectName.Models;
+using NETProject.Data;
+using NETProject.Models;
 
-namespace YourProjectName.Controllers
+namespace NETProject.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
