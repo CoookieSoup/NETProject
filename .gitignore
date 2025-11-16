@@ -1,0 +1,17 @@
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# CSV data
+*.csv
+
+# Build
+bin/
+obj/
+
+# VS
+.vs/
+.vscode/
+*.user
+*.suo
