@@ -83,5 +83,18 @@ namespace NETProject.Controllers
             await _context.SaveChangesAsync();
             return Ok(new { Message = $"Uploaded {transactions.Count} transactions" });
         }
+        [HttpDelete("transactions/reset")]
+        public async Task<ActionResult> DeleteAllTransactions()
+        {
+            var items = await _context.BankTransactions.ToListAsync();
+            if (items.Count == 0)
+            {
+                return NotFound();
+            }
+
+            _context.BankTransactions.RemoveRange(items);
+            await _context.SaveChangesAsync();
+            return Ok(new { Message = $"Deleted {items.Count} transactions" });
+        }
     }
 }
