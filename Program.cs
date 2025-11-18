@@ -1,17 +1,28 @@
 using Microsoft.EntityFrameworkCore;
-using NETProject.Data;  // Change "YourProjectName" to your actual project name
+using NETProject.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services
+
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=transactions.db"));
 
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
-// You can remove or keep the Hello World endpoint
-// app.MapGet("/", () => "Hello World!");
+app.UseCors("AllowReactApp");
 
 app.MapControllers();
 
